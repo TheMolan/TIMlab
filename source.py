@@ -1,5 +1,5 @@
-import request_receiver_class
+from request_receiver_class import *
 
 
-RR = request_receiver_class.request_receiver()
+RR = request_receiver()
 RR.receive()
