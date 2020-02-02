@@ -1,8 +1,8 @@
 import datetime
 from random import randrange
-from info_sender_class import info_sender
-import server_repository_class
-import server_log_repository_class
+from info_sender_class import *#info_sender
+from server_repository_class import *
+from server_log_repository_class import *
 
 class executor():
     def __init__(self, repos):
@@ -23,7 +23,7 @@ class removeserver_command(executor):
 
 class server_information_collector_command(executor):  #
     def execute(self, query):
-        if query['ip'] in server_repository_class.servers:###
+        if query['ip'] in servers:###
             timelog = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
             cpulog = randrange(50, 100, 10)
             log = {
@@ -40,4 +40,4 @@ class server_information_collector_command(executor):  #
 class log_collector_command(executor):
     def execute(self, query):
         isender = info_sender()
-        isender.send(server_log_repository_class.logs)###
+        isender.send(logs)###
