@@ -21,7 +21,7 @@ class removeserver_command(executor):
         self.repos.remove_server(query['ip'])
 
 
-class server_information_collector_command(executor):  # взять инфу с сервера и отправить в отправитель
+class server_information_collector_command(executor):  #
     def execute(self, query):
         if query['ip'] in server_repository_class.servers:###
             timelog = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
