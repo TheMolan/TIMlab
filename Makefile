@@ -1,2 +1,2 @@
 all:
-	python3 source.py
+	python3 request_receiver_class.py
