@@ -1,10 +1,13 @@
 logs = []
 
+
 class interface_server_log_repository:
     def find_logs(self):
         return
+
     def add_logs(self, ip, log):
         return
+
 
 class server_log_repository(interface_server_log_repository):
     def _check(self, ip):

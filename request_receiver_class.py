@@ -1,10 +1,12 @@
-from executor_class import *#addserver_command, removeserver_command, server_information_collector_command, log_collector_command
-from server_repository_class import *#server_repository
-from server_log_repository_class import *#server_log_repository
+from executor_class import *
+from server_repository_class import *
+from server_log_repository_class import *
+
 
 class interface_request_receiver:
     def receive(self):
         return
+
 
 class request_receiver(interface_request_receiver):
     def validate(self, command):
@@ -48,5 +50,6 @@ class request_receiver(interface_request_receiver):
                     break
                 executor.execute(query)
 
+
 if __name__ == '__main__':
-	request_receiver().receive()
+    request_receiver().receive()

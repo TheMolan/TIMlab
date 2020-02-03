@@ -4,9 +4,11 @@ from info_sender_class import *
 from server_repository_class import *
 from server_log_repository_class import *
 
+
 class executor():
     def __init__(self, repos):
         self.repos = repos
+
     def execute(self, query):
         return
 
