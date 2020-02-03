@@ -1,6 +1,6 @@
 import datetime
 from random import randrange
-from info_sender_class import *#info_sender
+from info_sender_class import *
 from server_repository_class import *
 from server_log_repository_class import *
 
@@ -21,23 +21,25 @@ class removeserver_command(executor):
         self.repos.remove_server(query['ip'])
 
 
-class server_information_collector_command(executor):  #
+class server_information_collector_command(executor):
     def execute(self, query):
-        if query['ip'] in servers:###
+        if query['ip'] in servers:
             timelog = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
-            cpulog = randrange(50, 100, 10)
+            cpulog = randrange(50, 100, 5)
             log = {
                 'timelog': timelog,
                 'cpulog': cpulog}
-            #            print(timelog, ' ', query['ip'], ' ', cpulog)
             self.repos.add_logs(query['ip'], log)
             isender = info_sender()
             isender.send(log)
+            return True
         else:
             print("***This server is not monitored***")
+            return False
 
 
 class log_collector_command(executor):
     def execute(self, query):
         isender = info_sender()
-        isender.send(logs)###
+        isender.send(logs)
+        return True

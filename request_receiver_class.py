@@ -12,7 +12,8 @@ class request_receiver(interface_request_receiver):
                 command != 'addserver' and
                 command != 'removeserver' and
                 command != 'serverinfo' and
-                command != 'sendlogs'
+                command != 'sendlogs' and
+                command != 'stop'
         ):
             print("Unknown command")
             return False
@@ -41,8 +42,10 @@ class request_receiver(interface_request_receiver):
                     }
                     executor = server_information_collector_command(server_log_repository())
                 if (command == 'sendlogs'):
-                    query = []
+                    query = {}
                     executor = log_collector_command(server_log_repository())
+                if (command == 'stop'):
+                    break
                 executor.execute(query)
 
 if __name__ == '__main__':
